@@ -15,7 +15,7 @@ ws.on("connection", function connect(websocket,req){
     sendUserId(user_id);
     websocket.on("message", function incoming(message){
         console.log(JSON.parse(message));
-        message = JSON.parse(message);
+        /*message = JSON.parse(message);
         switch(message.code) {
             case "connect_name" : // 사용자 추가
                 ALL_WS.forEach(function(element, index){ // ALL_WS 요소에 모든 접근 가능
@@ -24,23 +24,22 @@ ws.on("connection", function connect(websocket,req){
                     }// ALL_WS 아이디 외에도 user_name이 추가 된거임 초기값음 " "공백
                 });
                 sendAllUsers();
-            break;
-        }
+                break;
+        }*/
     });
-    //문자열을 바꿔서 소켓을 통해 서버로 보낸다.
-    function sendUserId(user_id){ //sendUserId 역할
-        let data={"code":"my_user_id","msg":user_id};
-        websocket.send(JSON.stringify(data));
-    } // JSON.stringify는 배열 형태의 이 변수를 문자열로 바꾸어줌.
 
     function sendAllUsers() { // 전체 사용자 정보를 보냄 (전체 user들에게 값을 보냄)
         let data ={"code":"all_users","msg":JSON.stringify(ALL_WS)};
 
         ALL_WS.forEach(function(element, index) {
             element.ws.send(JSON.stringify(data)); // 이 data 변수에 담겨 있는 모든 정보를
-            if(element.user_id==message.user_id){ // 접속해 있는 모든 클라이언트에게 사용자 정보 전체를 발송
-                element.user_name=message.name;
-            }            
+           // 접속해 있는 모든 클라이언트에게 사용자 정보 전체를 발송                
         });
     }
+
+    //문자열을 바꿔서 소켓을 통해 서버로 보낸다.
+    function sendUserId(user_id){ //sendUserId 역할
+        let data={"code":"my_user_id","msg":user_id};
+        websocket.send(JSON.stringify(data));
+    } // JSON.stringify는 배열 형태의 이 변수를 문자열로 바꾸어줌.
 });
