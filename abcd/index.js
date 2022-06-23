@@ -13,19 +13,19 @@ ws.on("connection", function connect(websocket,req){
     //하나는 ws 요소, 하나는 user_id 요소
 
     sendUserId(user_id);
-    websocket.on("message", function incoming(message){
+    websocket.on("message", function incoming(message) {
         console.log(JSON.parse(message));
-        /*message = JSON.parse(message);
+        message = JSON.parse(message);
         switch(message.code) {
             case "connect_name" : // 사용자 추가
-                ALL_WS.forEach(function(element, index){ // ALL_WS 요소에 모든 접근 가능
-                    if(element.user_id==message.user_id){
-                        element.user_name=message.name;
+                ALL_WS.forEach(function(element, index) { // ALL_WS 요소에 모든 접근 가능
+                    if(element.user_id == message.user_id) {
+                        element.user_name = message.name;
                     }// ALL_WS 아이디 외에도 user_name이 추가 된거임 초기값음 " "공백
                 });
                 sendAllUsers();
                 break;
-        }*/
+        }
     });
 
     function sendAllUsers() { // 전체 사용자 정보를 보냄 (전체 user들에게 값을 보냄)
