@@ -24,7 +24,15 @@ ws.on("connection", function connect(websocket,req){
                     }// ALL_WS 아이디 외에도 user_name이 추가 된거임 초기값음 " "공백
                 });
                 sendAllUsers();
-                break;
+            break;
+            case "send_message" : // 채팅메시지 받음
+                ALL_WS.forEach(function(element, index) { // ALL_WS 요소에 모든 접근 가능
+                    //element.ws 클라이언트와의 연결 지점
+                    let data ={"code":"chat_message","msg":message.msg, "sender_name":message.name};
+                    element.ws.send(JSON.stringify(data));
+                });
+
+            break;
         }
     });
 
