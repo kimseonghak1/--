@@ -13,6 +13,15 @@ ws.on("connection", function connect(websocket,req){
     //하나는 ws 요소, 하나는 user_id 요소
 
     sendUserId(user_id);
+    websocket.on("close", function close(code, reaseon) { // 접속 끊겼을 때의 이벤트
+        ALL_WS.forEach(function(element, index) { // ALL_WS 요소에 모든 접근 가능
+            if(element.ws == websocket) { // 접속이 끊긴 유저
+                ALL_WS.splice(index, 1);
+            }// ALL_WS 아이디 외에도 user_name이 추가 된거임 초기값음 " "공백
+        });
+        sendAllUsers();
+    });
+
     websocket.on("message", function incoming(message) {
         console.log(JSON.parse(message));
         message = JSON.parse(message);
