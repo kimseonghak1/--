@@ -1,4 +1,15 @@
 "use strict";
 
-console.log("오전 9시 출근");
-console.log("오후 1시 퇴근");
+const id = document.querySelector("#id"),
+  passwd = document.querySelector("#passwd"),
+  loginBtn = document.querySelector("button");
+
+loginBtn.addEventListener("click",login);
+    
+function login() {
+    const req = {
+      id:id.value,
+      passwd:passwd.value
+    };
+    console.log(req);
+}
