@@ -7,9 +7,16 @@ const id = document.querySelector("#id"),
 loginBtn.addEventListener("click",login);
     
 function login() {
-    const req = {
+    const req = { // 오브젝트 형태로 진행함.
       id:id.value,
       passwd:passwd.value
     };
-    console.log(req);
+
+    fetch("/login", { // fetch("경로",{전달할 데이터});
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body: JSON.stringify(req)
+    });
 }
