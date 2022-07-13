@@ -54,7 +54,7 @@ ws.on("connection", function connect(websocket,req){
         });
     }
 
-    //문자열을 바꿔서 소켓을 통해 서버로 보낸다.
+    //문자열을 바꿔서 소켓을 통해 클라이언트로 보낸다.
     function sendUserId(user_id){ //sendUserId 역할
         let data={"code":"my_user_id","msg":user_id};
         websocket.send(JSON.stringify(data));

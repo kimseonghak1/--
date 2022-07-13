@@ -11,12 +11,12 @@ function login() {
       id:id.value,
       passwd:passwd.value
     };
-
-    fetch("/login", { // fetch("경로",{전달할 데이터});
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body: JSON.stringify(req)
-    });
+    console.log(req);
+    // fetch("/login", { // fetch("경로",{전달할 데이터});
+    //   method:"POST",
+    //   headers:{
+    //     "Content-Type":"application/json"
+    //   },
+    //   body: JSON.stringify(req)
+    // });
 }
