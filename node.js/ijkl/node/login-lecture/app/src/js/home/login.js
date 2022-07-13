@@ -1,1 +1,0 @@
-"use strict"; // login.js와 /views/home/login.ejs 연결

@@ -26,7 +26,7 @@ const home = require("./src/routes/home"); // "./routes/home에 있는 자바스
 app.set("views", "./src/views");
 app.set("view engine","ejs");
 
-
+app.use(express.static(`${__dirname}/src/public`));
 
 app.use("/", home); // use -> 미들 웨어를 등록해주는 메서드  // "/"이 루트 경로에 오면 home으로 이동
 
