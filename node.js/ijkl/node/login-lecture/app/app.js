@@ -21,9 +21,11 @@ const app = express();
 
 // 라우팅
 const home = require("./src/routes/home"); // "./routes/home에 있는 자바스크립트를 읽어와줘"라는 뜻
+
 // 앱 세팅
-app.set("views", "./app/src/views");
-app.set("view engine","ejs");s
+app.set("views", "./src/views");
+app.set("view engine","ejs");
+
 
 
 app.use("/", home); // use -> 미들 웨어를 등록해주는 메서드  // "/"이 루트 경로에 오면 home으로 이동
